@@ -1,0 +1,480 @@
+/* ============== GENERAL & RESET ============== */
+:root {
+    --primary-color: #333;       /* Dark Grey/Black */
+    --secondary-color: #f4f4f4;   /* Light Grey */
+    --accent-color: #007bff;      /* Example Accent - Blue */
+    --text-color: #333;
+    --light-text-color: #fff;
+    --footer-bg: #222;
+    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Example Font */
+    --font-headings: 'Georgia', serif; /* Example Font for headings */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scroll for internal links */
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+    overflow: hidden; /* Clear floats */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-headings);
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2rem; text-align: center; }
+h3 { font-size: 1.4rem; }
+
+p { margin-bottom: 1em; }
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below images */
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.section-light {
+    background-color: var(--secondary-color);
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+
+/* ============== BUTTONS ============== */
+.cta-button, .button-secondary {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    text-decoration: none; /* Remove underline from links styled as buttons */
+}
+.cta-button:hover {
+    background-color: #0056b3; /* Darker accent */
+    color: var(--light-text-color);
+    text-decoration: none;
+}
+
+.button-secondary {
+    background-color: transparent;
+    color: var(--light-text-color); /* Assuming light text on hero */
+    border: 2px solid var(--light-text-color);
+    text-decoration: none;
+}
+.button-secondary:hover {
+    background-color: var(--light-text-color);
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+
+/* ============== HEADER ============== */
+#header {
+    background-color: #fff;
+    color: var(--text-color);
+    padding: 15px 0;
+    position: sticky; /* Sticky Header */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.logo:hover { text-decoration: none; }
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Simple underline effect on hover/active */
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+.nav-menu li a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle-button {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+
+/* ============== HERO SECTION ============== */
+#hero {
+    height: 200vh; /* Adjust height as needed */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--light-text-color);
+    overflow: hidden; /* Ensure background doesn't overflow */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('photos/hero.jpg') no-repeat center center/cover; /* REPLACE with actual hero image */
+    z-index: -1; /* Place behind content */
+    /* Add a subtle overlay for text readability */
+    filter: brightness(0.6);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem; /* Larger on Hero */
+    margin-bottom: 0.3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content .tagline {
+    font-size: 1.4rem;
+    margin-bottom: 1.5em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+
+/* ============== SERVICES SECTION ============== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-item {
+    background: var(--secondary-color);
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+
+/* ============== PORTFOLIO SECTION ============== */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%; /* Ensure images fill the container */
+    object-fit: cover; /* Crop images nicely */
+    border-radius: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer; /* Indicate clickability (for potential lightbox) */
+}
+
+.portfolio-item img:hover {
+    transform: scale(1.03);
+    opacity: 0.85;
+}
+
+.portfolio-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ============== ABOUT SECTION ============== */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 350px; /* Control image size */
+}
+
+.about-image img {
+    border-radius: 50%; /* Make profile picture round */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    flex: 2;
+}
+.about-text h2 { text-align: left; }
+
+/* ============== TESTIMONIALS SECTION ============== */
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial {
+    background: var(--secondary-color);
+    padding: 25px;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 5px;
+}
+
+.testimonial blockquote {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #555;
+    quotes: "“" "”"; /* Add quotes */
+}
+.testimonial blockquote::before { content: open-quote; }
+.testimonial blockquote::after { content: close-quote; }
+
+
+.testimonial .author {
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 0;
+    color: var(--primary-color);
+}
+
+/* ============== FOOTER ============== */
+#contact { /* Use contact ID for the footer section */
+    background-color: var(--footer-bg);
+    color: #ccc; /* Lighter text for footer */
+    padding-top: 40px; /* Add padding above columns */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    gap: 30px; /* Spacing between columns */
+    padding-bottom: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px; /* Ensure columns don't get too narrow */
+}
+
+.footer-column h3 {
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.footer-column p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+.footer-column p i { /* Icon styling */
+    margin-right: 8px;
+    color: var(--accent-color);
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+}
+.footer-column a:hover {
+    color: var(--light-text-color);
+    text-decoration: underline;
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #444; /* Separator line */
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* ============== RESPONSIVENESS ============== */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .hero-content h1 { font-size: 3rem; }
+    h2 { font-size: 1.8rem; }
+
+    /* --- Mobile Header --- */
+    .header-container { position: relative; } /* Needed for absolute positioning of menu */
+
+    .nav-menu {
+        display: none; /* Hide nav links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        border-top: 1px solid #eee;
+    }
+
+    .nav-menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+    .nav-menu li {
+        margin: 0;
+        text-align: center;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .nav-menu li a::after { display: none; /* Remove underline effect on mobile */ }
+
+
+    .menu-toggle-button {
+        display: block; /* Show burger button */
+    }
+
+    .header-container .cta-button {
+        display: none; /* Optionally hide Call Now button next to burger */
+        /* Or adjust its position/size */
+    }
+    /* --- End Mobile Header --- */
+
+
+    #hero { height: 70vh; }
+
+    .about-container {
+        flex-direction: column; /* Stack image and text */
+        text-align: center;
+    }
+    .about-image { margin-bottom: 20px; max-width: 250px; }
+    .about-text h2 { text-align: center; }
+
+    .footer-container {
+        flex-direction: column; /* Stack footer columns */
+        text-align: center;
+    }
+    .footer-column h3 { display: block; border-bottom: none;} /* Adjust heading style */
+    .social-icons { justify-content: center; } /* Center social icons */
+
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content .tagline { font-size: 1.1rem; }
+    h2 { font-size: 1.6rem; }
+
+    .services-grid, .portfolio-grid, .testimonials-container {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .cta-button, .button-secondary { padding: 8px 18px; font-size: 0.9rem; }
+
+}
